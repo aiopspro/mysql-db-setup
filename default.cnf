@@ -1,0 +1,29 @@
+[mysqld]
+
+# ✅ Ensure logs exist & MySQL can write
+log_error=/var/log/mysql/error.log
+log_error_verbosity=3
+general_log=0
+general_log_file=/var/log/mysql/general.log
+slow_query_log=0
+slow_query_log_file=/var/log/mysql/slow.log
+
+
+
+# ✅ Ensure password-based authentication
+sql_mode="NO_ENGINE_SUBSTITUTION"
+
+# Network and connection settings
+skip-name-resolve        # To avoid DNS lookups for hostnames
+bind-address = 0.0.0.0   # Listen on all IP addresses, consider restricting to internal IP in production
+
+# ✅ Fix permission issues
+user=mysql
+secure-file-priv=NULL
+symbolic-links=0
+pid-file=/var/run/mysqld/mysqld.pid
+socket=/var/run/mysqld/mysqld.sock
+
+# ✅ changing default authentication method from caching_sha2_password to mysql_native_password
+default_authentication_plugin=mysql_native_password
+
