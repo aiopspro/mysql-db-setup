@@ -52,3 +52,45 @@ GRANT ALTER ROUTINE, CREATE ROUTINE, EXECUTE ON testing.* TO 'testdbuser'@'%';
 
 FLUSH PRIVILEGES;
 
+---
+
+## 🚀 Usage
+
+### 1. Build the Docker Image
+
+```bash
+docker build -t custom-mysql:8.0 .
+
+### 2. Run the Container
+
+```bash
+docker run -d \
+  --name mysql-custom \
+  -e MYSQL_ROOT_PASSWORD=your_strong_password \
+  -p 3306:3306 \
+  custom-mysql:8.0
+
+> ⚠️ Important Customization Note
+Please review and modify the following files before production use:
+
+Dockerfile
+
+00_init.sql
+
+default.cnf
+
+You may want to update:
+
+🛠️ Database names, users, and privileges
+
+🔐 Root password (never use defaults in production)
+
+🔁 Cron or logrotate frequency
+
+🔧 MySQL server settings like buffer sizes, connection limits
+
+⚙️ File paths and volume mappings depending on your host system
+
+🔧 MySQL server settings like buffer sizes, connection limits
+
+⚙️ File paths and volume mappings depending on your host system
