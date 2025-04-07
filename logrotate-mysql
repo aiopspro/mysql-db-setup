@@ -1,0 +1,8 @@
+/var/log/mysql/general.log {
+    size 50M
+    rotate 7
+    compress
+    missingok
+    notifempty
+    create 640 mysql adm
+}
